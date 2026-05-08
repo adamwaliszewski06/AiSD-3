@@ -218,32 +218,6 @@ public:
         colors[u] = BLACK;
     }
 
-    bool hasCycle = false;
-
-    void DFSVisit(int u, vector<Color>& colors) {
-
-        colors[u] = GRAY;
-
-        for (int v = 0; v < n; v++) {
-
-            // istnieje krawêdŸ u -> v
-            if (adjacencyMatrix[u][v] == 1) {
-
-                // jeœli trafimy na GRAY -> cykl
-                if (colors[v] == GRAY) {
-                    hasCycle = true;
-                }
-
-                // odwiedzamy nieodwiedzonego s¹siada
-                if (colors[v] == WHITE) {
-                    DFSVisit(v, colors);
-                }
-            }
-        }
-
-        colors[u] = BLACK;
-    }
-
     bool hasValidTreeStructure() {
 
         vector<int> indegree(n, 0);
